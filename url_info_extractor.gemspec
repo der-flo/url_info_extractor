@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.version     = UrlInfoExtractor::VERSION
   s.authors     = ["Florian Dütsch"]
   s.email       = ["mail@florian-duetsch.de"]
-  s.homepage    = ""
+  s.homepage    = "https://github.com/der-flo/url_info_extractor"
   s.summary     = %q{Extract metadata out of a URL}
   s.description = %q{Extract title, meta-description and favicon out of a URL}
 
