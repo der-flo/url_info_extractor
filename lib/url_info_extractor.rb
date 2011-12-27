@@ -6,7 +6,6 @@ require 'active_support/core_ext/object/try'
 require 'active_support/core_ext/string/inflections'
 require 'net/https'
 
-# TODO: Nobody uses meta-keywords anymore. Should we support them?
 class UrlInfoExtractor
   include Favicon
 
@@ -31,6 +30,8 @@ class UrlInfoExtractor
 
   private
 
+  PROCESSABLE_MIME_TYPES = %w(application/xhtml+xml text/html)
+
   def fetched_data
     @fetched_data ||= fetch_data
   end
@@ -39,9 +40,7 @@ class UrlInfoExtractor
     raise SchemeNotSupported unless scheme_supported?
     response = do_http_request(@path, :get)
 
-    # Only process mime type 'text/html'
-    # TODO: More mime types?
-    return {} unless response.content_type == 'text/html'
+    return {} unless PROCESSABLE_MIME_TYPES.include?(response.content_type)
 
     doc = Nokogiri::HTML(response.body)
     head = doc.css('html head')
@@ -50,7 +49,8 @@ class UrlInfoExtractor
       description:
         head.css('meta[name=description]').try(:first).try(:[], 'content'),
       favicon_link_value:
-        head.css('link[rel~=icon]').try(:first).try(:[], 'href')
+        head.css('link[rel~=icon]').try(:first).try(:[], 'href'),
+      base_link_value: head.css('base').try(:first).try(:[], 'href')
     }
   end
 
@@ -62,3 +62,4 @@ class UrlInfoExtractor
     end
   end
 end
+

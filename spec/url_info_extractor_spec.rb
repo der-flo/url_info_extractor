@@ -1,8 +1,7 @@
 require 'spec_helper'
 
 describe UrlInfoExtractor do
-  use_vcr_cassette record: :new_episodes
-
+  use_vcr_cassette
   it 'extracts the title from rubygems.org' do
     infos = UrlInfoExtractor.new('http://rubygems.org')
     infos.title.should =~ /rubygems/i
