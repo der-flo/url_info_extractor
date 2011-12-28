@@ -1,0 +1,19 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://www.with-base.com/
+    body: ''
+  response:
+    status:
+      code: 200
+      message: OK
+    body: ! "<html><head><base href=\"http://www2.with-base.com/\">
+      <link rel=\"shortcut icon\" href=\"icon.ico\">
+      </head><body></body></html>"
+    headers:
+      Content-Type:
+      - text/html; charset=utf-8
+  recorded_at: Tue, 27 Dec 2011 17:35:07 GMT
+recorded_with: VCR 2.0.0.rc1
+

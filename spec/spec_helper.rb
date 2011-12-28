@@ -1,3 +1,9 @@
+
+if ENV['COVERAGE']
+  require 'simplecov'
+  SimpleCov.start
+end
+
 require 'url_info_extractor'
 require 'vcr'
 

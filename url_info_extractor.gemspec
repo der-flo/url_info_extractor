@@ -24,6 +24,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'guard-rspec'
   s.add_development_dependency 'vcr', '2.0.0.rc1'
   s.add_development_dependency 'webmock'
+  s.add_development_dependency 'simplecov', '~> 0.5.4'
   if RUBY_PLATFORM =~ /darwin/i
     s.add_development_dependency 'rb-fsevent'
     s.add_development_dependency 'growl'

@@ -1,3 +1,4 @@
 * Error handling necessary?
 * Nobody uses meta-keywords anymore. Should we support them?
+* Compatibility with Ruby 1.8 and others
 
